@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "AurumV2core": {
+      "address": "0x532dFde42Cf3F2286B0B8223E22CdaBE45249F46",
+      "startBlock": 4355410
+    }
+  }
+}

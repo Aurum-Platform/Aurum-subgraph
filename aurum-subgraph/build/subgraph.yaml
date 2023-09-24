@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AurumV2core
+    network: sepolia
+    source:
+      address: "0x532dFde42Cf3F2286B0B8223E22CdaBE45249F46"
+      abi: AurumV2core
+      startBlock: 4355410
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Borrow
+        - Deposition
+        - OwnershipTransferred
+        - Repay
+        - Withdrawal
+      abis:
+        - name: AurumV2core
+          file: AurumV2core/abis/AurumV2core.json
+      eventHandlers:
+        - event: Borrow(indexed address,indexed uint256,indexed uint256,uint256)
+          handler: handleBorrow
+        - event: Deposition(indexed uint256,indexed address,indexed uint256)
+          handler: handleDeposition
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Repay(indexed address,indexed uint256,indexed uint256,uint256)
+          handler: handleRepay
+        - event: Withdrawal(indexed uint256,indexed address,indexed uint256)
+          handler: handleWithdrawal
+      file: AurumV2core/AurumV2core.wasm
